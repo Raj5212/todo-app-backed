@@ -62,14 +62,14 @@ module.exports = {
   updateTask: async (req, res) => {
     try {
         const { id } = req.params;
-        const { title, content, isCompleted } = req.body;
+        const { title, content, completed } = req.body;
         const updatedTask = await Task.findByIdAndUpdate(
             id,
             {
                 $set: {
                     ...(title !== undefined && { title }),
                     ...(content !== undefined && { content }),
-                    ...(isCompleted !== undefined && { isCompleted }),
+                    ...(completed !== undefined && { completed }),
                 },
             },
             { new: true } 
